@@ -1,13 +1,19 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
+
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+
+
   beforeEach(async () => {
+
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
-      providers: [provideRouter([])],
+      declarations: [AppComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [RouterTestingModule.withRoutes([])],
     }).compileComponents();
   });
 
@@ -33,11 +39,8 @@ describe('AppComponent', () => {
     const app = fixture.nativeElement;
     const menuItems = app.querySelectorAll('ion-item');
     expect(menuItems.length).toEqual(12);
-    expect(menuItems[0].getAttribute('ng-reflect-router-link')).toEqual(
-      '/folder/inbox'
-    );
-    expect(menuItems[1].getAttribute('ng-reflect-router-link')).toEqual(
-      '/folder/outbox'
-    );
+    expect(menuItems[0].getAttribute('ng-reflect-router-link')).toEqual('/folder/inbox');
+    expect(menuItems[1].getAttribute('ng-reflect-router-link')).toEqual('/folder/outbox');
   });
+
 });
