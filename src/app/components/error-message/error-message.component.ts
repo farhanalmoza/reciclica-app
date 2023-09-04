@@ -18,7 +18,7 @@ export class ErrorMessageComponent  implements OnInit {
 
   shouldShowComponent() {
     // form.get('email').touched && form.get('email').errors?.required
-    if (this.field.touched && this.field.errors?.[this.error]) {
+    if (this.field?.touched && this.field.errors?.[this.error]) {
       return true;
     }
     return false;
